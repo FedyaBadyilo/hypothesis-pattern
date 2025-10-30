@@ -6,5 +6,3 @@ This module contains:
 - Ports: Abstract interfaces for external dependencies
 - Use Cases: Business logic orchestration
 """
-
-

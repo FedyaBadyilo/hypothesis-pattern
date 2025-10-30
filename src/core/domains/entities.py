@@ -11,7 +11,7 @@ from typing import Dict, Any, Optional
 
 class Document(BaseModel):
     """Represents a document in the system."""
-    
+
     text: str
     id: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)

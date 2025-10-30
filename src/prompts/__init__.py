@@ -1,3 +1,1 @@
 """Prompt templates directory."""
-
-
