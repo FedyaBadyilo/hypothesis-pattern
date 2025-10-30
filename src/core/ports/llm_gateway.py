@@ -6,7 +6,8 @@ allowing the core business logic to be independent of specific implementations.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional, TypeVar, Type
+from typing import Any, Optional, TypeVar
+
 from pydantic import BaseModel
 
 T = TypeVar("T", bound=BaseModel)
@@ -35,7 +36,7 @@ class LLMGateway(ABC):
         pass
 
     @abstractmethod
-    def embed(self, texts: List[str], **kwargs) -> List[List[float]]:
+    def embed(self, texts: list[str], **kwargs) -> list[list[float]]:
         """
         Generate embeddings for texts.
 
@@ -48,7 +49,7 @@ class LLMGateway(ABC):
         """
         pass
 
-    def generate_structured(self, prompt: str, response_model: Type[T], **kwargs) -> T:
+    def generate_structured(self, prompt: str, response_model: type[T], **kwargs) -> T:
         """
         Generate structured output using Pydantic model.
 
@@ -72,10 +73,10 @@ class LLMGateway(ABC):
     def generate_with_functions(
         self,
         query: str,
-        functions: List[Dict[str, Any]],
+        functions: list[dict[str, Any]],
         system_prompt: Optional[str] = None,
         **kwargs,
-    ) -> Optional[Dict[str, Any]]:
+    ) -> Optional[dict[str, Any]]:
         """
         Generate response with function calling support.
 

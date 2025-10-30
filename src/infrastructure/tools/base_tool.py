@@ -7,7 +7,7 @@ so this is a minimal abstraction that can be adapted.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any
 
 
 class BaseTool(ABC):
@@ -47,7 +47,7 @@ class BaseTool(ABC):
         """
         pass
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """
         Convert tool to dictionary representation.
 

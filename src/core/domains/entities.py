@@ -5,8 +5,9 @@ These are pure data structures representing domain concepts,
 independent of any external frameworks or infrastructure.
 """
 
+from typing import Any, Optional
+
 from pydantic import BaseModel, Field
-from typing import Dict, Any, Optional
 
 
 class Document(BaseModel):
@@ -14,4 +15,4 @@ class Document(BaseModel):
 
     text: str
     id: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)
+    metadata: Optional[dict[str, Any]] = Field(default_factory=dict)

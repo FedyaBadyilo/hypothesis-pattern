@@ -5,7 +5,7 @@ All monitoring implementations must implement this interface.
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, Dict, Any
+from typing import Any, Optional
 
 
 class BaseMonitor(ABC):
@@ -18,7 +18,7 @@ class BaseMonitor(ABC):
 
     @abstractmethod
     def log_llm(
-        self, prompt: str, response: str, metadata: Optional[Dict[str, Any]] = None
+        self, prompt: str, response: str, metadata: Optional[dict[str, Any]] = None
     ) -> None:
         """
         Log LLM call.

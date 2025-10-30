@@ -6,7 +6,7 @@ allowing retrieval tools to work with any vector database implementation.
 """
 
 from abc import ABC, abstractmethod
-from typing import List
+
 from src.core.domains.entities import Document
 
 
@@ -19,7 +19,7 @@ class VectorStoreGateway(ABC):
     """
 
     @abstractmethod
-    def search(self, query: str, top_k: int = 5, **kwargs) -> List[Document]:
+    def search(self, query: str, top_k: int = 5, **kwargs) -> list[Document]:
         """
         Search for relevant documents by query.
 
