@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "llm-hypothesis-template"
+version = "0.1.0"
+description = "Template repository for rapid prototyping and hypothesis testing of LLM-powered agents, RAG systems, and document processing solutions"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pydantic = "^2.12.3"
+
+[tool.poetry.extras]
+# your extra dependencies
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+ruff = "^0.1.0"
+black = "^23.0.0"
+
+# Scripts will be available after implementation
+# Uncomment when CLI and API are implemented:
+# [tool.poetry.scripts]
+# llm-chat = "src.applications.cli.main:app"
+# llm-api = "src.applications.api.routes:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | \.build
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]  # Line too long - handled by black
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=src --cov-report=term-missing"
