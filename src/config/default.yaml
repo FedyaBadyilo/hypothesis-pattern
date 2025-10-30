@@ -1,0 +1,33 @@
+"""
+Default configuration file.
+
+Copy this file and customize for your hypothesis.
+"""
+
+llm:
+  provider: openai  # openai | yandex
+  model: gpt-4o-mini
+  temperature: 0.0
+  # api_key: ${OPENAI_API_KEY}  # Can be set via environment variable
+
+agent:
+  # Tools: empty list for simple chat, or list of tool names
+  tools: []
+  system_prompt: prompts/prompts.yaml
+
+retrieval:
+  vector_store:
+    provider: qdrant  # postgres | qdrant
+    url: ${VECTOR_STORE_URL:-localhost:6333}
+    api_key: ${VECTOR_STORE_API_KEY}
+    collection_name: default
+  top_k: 5
+
+monitoring:
+  enabled: false  # Set to true to enable monitoring
+  provider: langfuse
+  secret_key: ${LANGFUSE_SECRET_KEY}
+  public_key: ${LANGFUSE_PUBLIC_KEY}
+  host: ${LANGFUSE_HOST:-https://cloud.langfuse.com}
+
+
