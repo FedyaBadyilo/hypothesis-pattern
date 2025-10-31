@@ -17,6 +17,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.ruff_cache/
 
 # IDE
 .vscode/
@@ -42,4 +43,3 @@ src/config/local.yaml
 # Logs
 *.log
 logs/
-
