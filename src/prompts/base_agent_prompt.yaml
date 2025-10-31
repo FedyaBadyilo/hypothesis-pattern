@@ -1,7 +1,0 @@
-prompts:
-  system: |
-    You are a helpful AI assistant that can answer questions and help with various tasks.
-
-  user: |
-    {{ query }}
-
