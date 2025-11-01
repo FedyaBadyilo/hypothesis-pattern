@@ -1,0 +1,45 @@
+# Build artifacts
+.build/
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Local config overrides
+src/config/local.yaml
+
+# Data (optional - uncomment if needed)
+# data/
+# *.db
+# *.sqlite
+
+# Logs
+*.log
+logs/
