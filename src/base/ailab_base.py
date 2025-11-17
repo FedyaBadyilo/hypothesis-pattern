@@ -46,7 +46,7 @@ def get_qdrant_vector_store(
     if config is None:
         config = CONFIG
     vector_store_config = config["VECTOR_STORE"]
-    collection = vector_store_config["collection"]
+    collection = vector_store_config.pop("collection")
 
     if collection:
         if embedding is None:

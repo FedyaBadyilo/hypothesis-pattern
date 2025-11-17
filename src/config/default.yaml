@@ -6,7 +6,7 @@ MODELS:
     temperature: 0.0
     max_tokens: 4096
   base_embedder:
-    base_url: http://llm-sandbox01.dev.dmz.cifrum.local:8081/v1
+    base_url: http://llm-sandbox01.dev.dmz.cifrum.local:8080/v1
     model: deepvk/USER-bge-m3
     openai_api_key: EMPTY
 
