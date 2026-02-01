@@ -1,0 +1,7 @@
+MODELS:
+  base_llm:
+    base_url: http://llm-sandbox01.dev.dmz.cifrum.local:8081/v1
+    model: /models/Qwen3-30B-A3B-Q5_K_M.gguf
+    openai_api_key: EMPTY
+    temperature: 0.0
+    max_tokens: 10000
