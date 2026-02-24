@@ -43,3 +43,13 @@ src/config/local.yaml
 # Logs
 *.log
 logs/
+
+# input/output в шагах и end2end — папки в репо (.gitkeep), содержимое не трогаем
+steps/*/input/*
+!steps/*/input/.gitkeep
+steps/*/output/*
+!steps/*/output/.gitkeep
+end2end/input/*
+!end2end/input/.gitkeep
+end2end/output/*
+!end2end/output/.gitkeep
