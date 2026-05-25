@@ -1,11 +1,14 @@
+from __future__ import annotations
+
 import os
 import logging
 import yaml
 from dotenv import load_dotenv
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-import httpx
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+if TYPE_CHECKING:
+    from langchain_openai import ChatOpenAI
 
 _current_file = Path(__file__).resolve()
 _project_root = _current_file.parent.parent  # src/base -> src -> project_root
@@ -51,6 +54,8 @@ def get_config_and_env(
 
 def get_openai_llm(model_name: str, config: dict | None = None) -> ChatOpenAI:
     """Получает и инициализирует модель OpenAI LLM из конфига"""
+    from langchain_openai import ChatOpenAI
+
     if config is None:
         config = get_config_and_env()
     llm_config = config["MODELS"][model_name]
@@ -65,6 +70,7 @@ def create_langfuse_handler(
     secret: str,
     debug: bool | None = False,
 ):
+    import httpx
     from langfuse import Langfuse
     from langfuse.langchain import CallbackHandler
 
