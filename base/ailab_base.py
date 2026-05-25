@@ -6,8 +6,6 @@ from pathlib import Path
 
 import httpx
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langfuse.callback import CallbackHandler
-from langfuse.client import Langfuse
 
 _current_file = Path(__file__).resolve()
 _project_root = _current_file.parent.parent  # src/base -> src -> project_root
@@ -67,46 +65,39 @@ def create_langfuse_handler(
     secret: str,
     debug: bool | None = False,
 ):
+    from langfuse import Langfuse
+    from langfuse.langchain import CallbackHandler
+
     if not enabled or url is None:
         return None
-    else:
-        logger.info(f"Langfuse URL set to '{url}'")
 
-        if not public or not secret:
-            logger.warning(
-                f"Langfuse URL was specified, but '{public}' or '{secret}' was not, tracing disabled"
-            )
-            return None
+    logger.info(f"Langfuse URL set to '{url}'")
 
-        logger.info("Tracing enabled")
+    if not public or not secret:
+        logger.warning(
+            f"Langfuse URL was specified, but '{public}' or '{secret}' was not, tracing disabled"
+        )
+        return None
+
+    logger.info("Tracing enabled")
 
     # Чтобы обходить проверки SSL — необходимо передавать кастомный httpx клиент
-    langfuse_handler = CallbackHandler(
-        secret_key=secret,
-        public_key=public,
-        host=url,
-        debug=debug,
-        httpx_client=httpx.Client(verify=False, cert=None),
-    )
-
+    httpx_client = httpx.Client(verify=False, cert=None)
     try:
-        with httpx.Client(verify=False, cert=None) as client:
-            langfuse = Langfuse(
-                host=url,
-                secret_key=secret,
-                public_key=public,
-                debug=debug,
-                httpx_client=client,
-            )
-
-            if langfuse.auth_check():
-                logger.info("Langfuse was authenticated successfully")
-            else:
-                logger.error("Langfuse has had problems with authentication")
+        Langfuse(
+            host=url,
+            secret_key=secret,
+            public_key=public,
+            debug=debug,
+            httpx_client=httpx_client,
+        )
+        logger.info("Langfuse client initialized")
     except Exception as e:
-        logger.error(f"Langfuse auth check failed: {e}")
+        logger.error(f"Langfuse initialization failed: {e}")
+        httpx_client.close()
+        return None
 
-    return langfuse_handler
+    return CallbackHandler(public_key=public)
 
 
 def get_langfuse_handler():
