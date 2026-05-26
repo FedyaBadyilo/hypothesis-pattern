@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from research_eval.tracking import log_eval_result, start_eval_run
-from research_eval.types import BaseEvalAdapter, EvalResult
+from infra.research_eval.tracking import log_eval_result, start_eval_run
+from infra.research_eval.types import BaseEvalAdapter, EvalResult
 
 
 def evaluate_experiment(

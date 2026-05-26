@@ -7,32 +7,30 @@
 <!-- Кратко: общий подход, основные компоненты, как гипотеза реализована в коде -->
 
 ## Структура репозитория
-- `scripts/raw_data_preprocess/` — предобработка сырых данных от заказчика (см. `info.md` в папке)
-- `steps/step1`, `step2`, … — шаги пайплайна (в каждом есть `info.md` с входом/выходом)
-- `end2end/` — end-to-end сценарий (см. `end2end/info.md`)
-- `base/` — общий код (например, работа с LLM)
+
+- `infra/` — переиспользуемая инфраструктура (config, LLM, eval runner, файловые хелперы)
+- `research/` — код гипотезы: `datasets/`, `lab/`, `steps/<step_name>/`
+- `apps/` — приложения и демо (когда появятся)
 - `config.yaml` — конфигурация (модели, ключи и т.п.)
+
+Подробнее: `.cursor/rules/repository-layout.mdc`.
 
 ## Запуск по шагам
 <!-- Перечислите порядок и команды. Пример: -->
 
-1. **Предобработка** (если нужна):  
-   `...`
+1. **Предобработка данных** (если нужна): см. `research/datasets/build/README.md`
 
-2. **Шаг 1**:  
-   `...`
+2. **Шаг** `step_name`: см. `research/steps/step_name/README.md`
 
-3. **Шаг 2**:  
-   `...`
-
-4. **E2E** (опционально):  
-   `...`
+3. **Оценка шага** (eval): см. `infra/research_eval/README.md` — добавьте `eval/adapter.py` и `eval/run.py` в шаг, когда метрики будут нужны.
 
 ## Требования
+
 - Python 3.x
-- Зависимости: `pip install -r requirements.txt`
+- Зависимости: `pip install -r requirements.txt` и `pip install -r requirements.research.txt`
 - Переменные окружения: скопировать `.env.example` в `.env` и заполнить
 
-## Документация по шагам
-- Описание каждого шага — в `steps/stepN/info.md` (вход, выход, назначение, запуск)
-- Описание e2e — в `end2end/info.md`
+## Документация
+
+- Описание шага — `research/steps/<step_name>/README.md`
+- Shared eval core — `infra/research_eval/README.md`

@@ -7,12 +7,11 @@ from typing import Any, Iterator
 
 import mlflow
 
-from research_eval.types import EvalResult
+from infra.config import get_config_and_env
+from infra.research_eval.types import EvalResult
 
 
 def _configure_tracking() -> None:
-    from base.ailab_base import get_config_and_env
-
     config = get_config_and_env()
     tracking_uri = config.get("MLFLOW_TRACKING_URI")
     if tracking_uri:

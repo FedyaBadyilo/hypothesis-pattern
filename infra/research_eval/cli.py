@@ -1,8 +1,8 @@
 import argparse
 from typing import Type
 
-from research_eval.runner import evaluate_experiment
-from research_eval.types import BaseEvalAdapter
+from infra.research_eval.runner import evaluate_experiment
+from infra.research_eval.types import BaseEvalAdapter
 
 
 def run_eval_cli(adapter_cls: Type[BaseEvalAdapter]) -> None:
