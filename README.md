@@ -30,5 +30,6 @@
 
 ## Документация
 
+- **Новая гипотеза из шаблона** — [docs/common/new-hypothesis-from-template.md](docs/common/new-hypothesis-from-template.md) (создание репозитория на GitLab Community)
 - Описание шага — `research/steps/<step_name>/README.md`
 - Shared eval core — `infra/research_eval/README.md`
