@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def get_single_input_file_path(input_dir: Path, file_extension: str) -> Path:
-    """Return the single file with the required extension from the dir."""
+    """Return the single file with the required extension from the directory."""
     if not input_dir.exists():
         raise FileNotFoundError(f"Directory '{input_dir}' does not exist")
     if not input_dir.is_dir():

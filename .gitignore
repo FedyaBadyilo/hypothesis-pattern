@@ -1,9 +1,3 @@
-# Build artifacts
-.build/
-dist/
-build/
-*.egg-info/
-
 # Environment
 .env
 .env.local
@@ -21,12 +15,16 @@ __pycache__/
 
 # IDE
 .vscode/
+.cursor/
+.codex/
+.claude/
 .idea/
 *.swp
 *.swo
 *~
 
-# Testing
+# Testing (template repo — add tests locally, do not commit)
+tests/
 .pytest_cache/
 .coverage
 htmlcov/
@@ -44,12 +42,8 @@ src/config/local.yaml
 *.log
 logs/
 
-# input/output в шагах и end2end — папки в репо (.gitkeep), содержимое не трогаем
-steps/*/input/*
-!steps/*/input/.gitkeep
-steps/*/output/*
-!steps/*/output/.gitkeep
-end2end/input/*
-!end2end/input/.gitkeep
-end2end/output/*
-!end2end/output/.gitkeep
+# Step input/output dirs are tracked (.gitkeep); generated contents are ignored
+research/steps/*/input/*
+!research/steps/*/input/.gitkeep
+research/steps/*/output/*
+!research/steps/*/output/.gitkeep
