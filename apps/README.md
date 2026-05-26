@@ -1,3 +1,3 @@
 # Apps
 
-User-facing or demo applications (backend, frontend, labeling) live here when implemented.
+User-facing or demo applications (backend, frontend) live here when implemented.
