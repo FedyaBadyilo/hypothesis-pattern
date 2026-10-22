@@ -4,8 +4,6 @@
 
 ## Репозиторий-шаблон
 
-Проект: `ailab/hypopattern`
-
 | Способ | URL                                                   |
 | ------ | ----------------------------------------------------- |
 | SSH    | `ssh://git@gitlab.rosatom.local:2222/source/gren-tsii/aspii-team/aspii-system/hypotheses/templates/hypothesis-pattern.git`     |
@@ -14,14 +12,14 @@
 
 ## Что понадобится
 
-- Доступ на **чтение** к `ailab/hypopattern`
-- Права на **запись** в группу, куда создаёте гипотезу
-- Локально: `git`, SSH или HTTPS к `git.cifrum-digital.ru`
+- Доступ на **чтение** к репозиторию
+- Права на **запись** в группу, в которой создаете репозиторий для гипотезы
+- Локально: `git`, SSH или HTTPS к `gitlab.rosatom.local`
 
-Замените в командах только:
+В командах значения в угловых скобках `<...>` — плейсхолдеры: подставьте свои, скобки в команду не копируйте.
 
-- `HYPOTHESIS_URL` — URL **нового** проекта (например `git@git.cifrum-digital.ru:ailab/my-hypothesis.git`)
-- `my-hypothesis` — имя локальной папки
+- `<HYPOTHESIS_URL>` — URL **нового** проекта (например `git@git.gitlab.rosatom.local/source/gren-tsii/aspii-team/aspii-system/hypotheses/<my-hypothesis>.git`)
+- `<my-hypothesis>` — имя локальной папки
 
 ## 1. Пустой проект в GitLab
 
@@ -30,13 +28,13 @@
 - Укажите группу и имя проекта
 - **Снимите** «Initialize repository with a README» — репозиторий должен быть пустым
 
-Скопируйте URL нового проекта — это `HYPOTHESIS_URL`.
+Скопируйте URL нового проекта — это `<HYPOTHESIS_URL>`.
 
 ## 2. Клонировать шаблон и отвязать от него
 
 ```bash
-git clone --depth 1 git@git.cifrum-digital.ru:ailab/hypopattern.git my-hypothesis
-cd my-hypothesis
+git clone --depth 1 ssh://git@gitlab.rosatom.local:2222/source/gren-tsii/aspii-team/aspii-system/hypotheses/templates/hypothesis-pattern.git <my-hypothesis>
+cd <my-hypothesis>
 
 rm -rf .git
 git init
@@ -48,7 +46,7 @@ git commit -m "Initial commit from HyppoPattern template"
 Через HTTPS:
 
 ```bash
-git clone --depth 1 https://git.cifrum-digital.ru/ailab/hypopattern.git my-hypothesis
+git clone --depth 1 https://gitlab.rosatom.local/source/gren-tsii/aspii-team/aspii-system/hypotheses/templates/hypothesis-pattern.git <my-hypothesis>
 ```
 
 `--depth 1` — только последний снимок файлов, без истории шаблона.
@@ -56,14 +54,7 @@ git clone --depth 1 https://git.cifrum-digital.ru/ailab/hypopattern.git my-hypot
 ## 3. Привязать к репозиторию гипотезы и запушить
 
 ```bash
-git remote add origin HYPOTHESIS_URL
-git push -u origin main
-```
-
-Пример, если гипотеза — `ailab/my-hypothesis`:
-
-```bash
-git remote add origin git@git.cifrum-digital.ru:ailab/my-hypothesis.git
+git remote add origin <HYPOTHESIS_URL>
 git push -u origin main
 ```
 
