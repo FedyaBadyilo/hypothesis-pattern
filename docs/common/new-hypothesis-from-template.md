@@ -8,8 +8,8 @@
 
 | Способ | URL                                                   |
 | ------ | ----------------------------------------------------- |
-| SSH    | `git@git.cifrum-digital.ru:ailab/hypopattern.git`     |
-| HTTPS  | `https://git.cifrum-digital.ru/ailab/hypopattern.git` |
+| SSH    | `ssh://git@gitlab.rosatom.local:2222/source/gren-tsii/aspii-team/aspii-system/hypotheses/templates/hypothesis-pattern.git`     |
+| HTTPS  | `https://gitlab.rosatom.local/source/gren-tsii/aspii-team/aspii-system/hypotheses/templates/hypothesis-pattern.git` |
 
 
 ## Что понадобится
